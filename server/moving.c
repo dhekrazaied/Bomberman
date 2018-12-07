@@ -22,6 +22,7 @@ void	move_player(
 {
   int	i;
 
+  //TODO: change 104 and 88 into pixel based values
   if (player_request->x_pos < 0 || player_request->y_pos < 0
       || player_request->x_pos > 104 || player_request->y_pos > 88)
     return;
@@ -47,6 +48,7 @@ int	check_collision(
 {
   int	i;
 
+  //TODO:Check the diameter around a player cause a collision
   for (i = (player_request->x_pos-3); i < (player_request->x_pos+3); ++i) {
     if (i < 0)
       continue;

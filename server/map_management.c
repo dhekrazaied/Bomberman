@@ -14,6 +14,7 @@
 #include "game_info.h"
 
 int		**get_array_map() {
+  // TODO: Change 88 and 104 into pixel based values
   static int	map[104][88];
   int 		x;
   int 		y;
@@ -21,6 +22,7 @@ int		**get_array_map() {
   int 		current_y_state;
 
   current_y_state = FREE_SLOT;
+  // TODO: Change 88 and 104 into pixel based values
   for (y = 0; y < 88; ++y) {
     current_x_state = WALL;
     if (x % 8 == 0)
@@ -44,6 +46,7 @@ void			add_destructible_elements(
   int 			j;
   t_map_destroyable	map_destroyable;
 
+  //TODO: check the meaning of 14 and 15 to be sure that works with pixels
   for (i = 1; i < 14; ++i) {
     for (j = 1; j < 15; ++j) {
       if (game_info->map_destroyable[i][j].exist == 0)
@@ -64,6 +67,7 @@ void			add_bomb_elements(
   int			j;
   t_map_destroyable	map_destroyable;
 
+  //TODO: check the meaning of 14 and 15 to be sure that works with pixels
   for (i = 1; i < 14; ++i) {
     for (j = 1; j < 15; ++j) {
       if (game_info->map_destroyable[i][j].exist == 0)
@@ -97,6 +101,7 @@ int 			is_there_a_wall(
 
   if (map_pointer[x][y] == WALL)
     return 1;
+  //TODO: check the meaning of 14 and 15 to be sure that works with pixels
   for (i = 1; i < 14; ++i) {
     for (j = 1; j < 15; ++j) {
       if (game_info->map_destroyable[i][j].exist == 0
