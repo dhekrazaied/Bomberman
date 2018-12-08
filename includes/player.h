@@ -16,7 +16,7 @@
 typedef struct	s_player
 {
   int		fd;
-  char		*identity;
+  char  *identity;
   int		x;
   int		y;
   int		disabled;

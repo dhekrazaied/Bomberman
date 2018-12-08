@@ -53,7 +53,6 @@ int			accept_players(t_srv **srv)
     game_info = get_game_info();
     game_info->players[check-1] = (*srv)->players[check-1];
     set_game_info(game_info);
-
   }
   return ((*srv)->n_players - check);
 }
