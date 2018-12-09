@@ -106,32 +106,33 @@ int			create_server_socket()
   return (s);
 }
 
-void		process_requests(t_srv **server)
-{
-  int		i;
-  t_game_info	*game_info;
+// TODO: fonction non utilisée?
+// void		process_requests(t_srv **server)
+// {
+//   int		i;
+//   t_game_info	*game_info;
 
-  game_info = get_game_info();
-  for (i = 0; i < 8; ++i)
-  {
-    if ((*server)->requests[i] == NULL)
-      continue;
-    if ((*server)->requests[i]->command == START_GAME)
-    {
-      if ((*server)->n_players >= 2 && (*server)->n_players <= 4)
-      {
-        create_game_info(server);
-        my_putstr("\n creation of game requested");
-      }
-    }
-    else if (game_info->game_status == 0)
-    {
-      free((*server)->requests[i]);
-      (*server)->requests[i] = NULL;
-      continue;
-    }
-    handle_requests(game_info, (*server)->requests[i]);
-    free((*server)->requests[i]);
-    (*server)->requests[i] = NULL;
-  }
-}
+//   game_info = get_game_info();
+//   for (i = 0; i < 8; ++i)
+//   {
+//     if ((*server)->requests[i] == NULL)
+//       continue;
+//     if ((*server)->requests[i]->command == START_GAME)
+//     {
+//       if ((*server)->n_players >= 2 && (*server)->n_players <= 4)
+//       {
+//         create_game_info(server);
+//         my_putstr("\n creation of game requested");
+//       }
+//     }
+//     else if (game_info->game_status == 0)
+//     {
+//       free((*server)->requests[i]);
+//       (*server)->requests[i] = NULL;
+//       continue;
+//     }
+//     handle_requests(game_info, (*server)->requests[i]);
+//     free((*server)->requests[i]);
+//     (*server)->requests[i] = NULL;
+//   }
+// }

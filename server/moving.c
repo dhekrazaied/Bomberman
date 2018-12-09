@@ -17,49 +17,58 @@
 void	move_player(
 		    t_game_info *game_info,
 		    t_player_request *player_request,
+        int num_player,
 		    int **map_pointer
 		    )
 {
-  int	i;
+      if (game_info->players[num_player].connected == 0)
+	      return;
 
-  if (player_request->x_pos < 0 || player_request->y_pos < 0
-      || player_request->x_pos > 104 || player_request->y_pos > 88)
-    return;
+      // TODO: Check les collisions
+      // if (check_collision(map_pointer, player_request) == 0)
+      // return;
 
-  if (check_collision(map_pointer, player_request) == 0)
-    return;
-
-  for (i = 0; i < 4; i++)
-    {
-      if (game_info->players[i].connected == 0
-	  || game_info->players[i].num_player != player_request->num_player)
-	continue;
-
-      game_info->players[i].x_pos = player_request->x_pos;
-      game_info->players[i].y_pos = player_request->y_pos;
+      switch(player_request->commande) {
+        case MOVE_UP:
+          game_info->players[num_player].y_pos -= 6;
+          break;
+        case MOVE_DOWN:
+          game_info->players[num_player].y_pos += 6;
+          break;
+        case MOVE_LEFT:
+          game_info->players[num_player].x_pos += 6;
+          break;
+        case MOVE_DOWN:
+          game_info->players[num_player].x_pos -= 6;
+          break;
+        default:
+          return
+      }
     }
-}
 
-int	check_collision(
-			int** map_pointer,
-			t_player_request *player_request
-			)
-{
-  int	i;
+/*
+  TODO: check les collisions
+*/
+// int	check_collision(
+// 			int** map_pointer,
+// 			t_player_request *player_request
+// 			)
+// {
+//   int	i;
 
-  for (i = (player_request->x_pos-3); i < (player_request->x_pos+3); ++i) {
-    if (i < 0)
-      continue;
-    if (map_pointer[player_request->x_pos][player_request->y_pos] == WALL)
-      return 0;
-  }
+//   for (i = (player_request->x_pos-3); i < (player_request->x_pos+3); ++i) {
+//     if (i < 0)
+//       continue;
+//     if (map_pointer[player_request->x_pos][player_request->y_pos] == WALL)
+//       return 0;
+//   }
 
-  for (i = (player_request->y_pos-3); i < (player_request->y_pos+3); ++i) {
-    if (i < 0)
-      continue;
-    if (map_pointer[player_request->x_pos][player_request->y_pos] == WALL)
-      return 0;
-  }
+//   for (i = (player_request->y_pos-3); i < (player_request->y_pos+3); ++i) {
+//     if (i < 0)
+//       continue;
+//     if (map_pointer[player_request->x_pos][player_request->y_pos] == WALL)
+//       return 0;
+//   }
 
-  return 1;
-}
+//   return 1;
+// }

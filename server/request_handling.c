@@ -16,14 +16,15 @@
 
 void	handle_requests(
 			t_game_info *game_info,
-			t_player_request *player_request
+			t_player_request *player_request,
+      int num_player
 			)
 {
   int	**map_pointer;
 
   map_pointer = get_array_map();
   add_destructible_elements(game_info, map_pointer);
-  move_player(game_info, player_request, map_pointer);
+  move_player(game_info, player_request, num_player, map_pointer);
   add_bomb_elements(game_info, map_pointer);
   if (player_request->command == PLACE_BOMB)
     place_bomb(game_info, player_request);
