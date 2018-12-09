@@ -24,6 +24,7 @@ int			main_loop(t_srv **srv)
   int			retval;
   t_player_request	*player_request;
   t_game_info		*game_info;
+  int           num_player;
 
   i = 0;
   game_info = get_game_info();
