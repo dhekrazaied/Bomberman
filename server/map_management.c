@@ -17,17 +17,18 @@
 int **get_array_map()
 {
     static int map[14][15];
-    int height;
-    int width;
+    int height, width, i, j, type;
 
     height = 1;
     for (j = J_BEGIN; j < J_BEGIN + 13; j++) {
         width = 0;
         // largeur
         for (i = I_BEGIN; i < I_BEGIN + 15; i++) {
-            SDL_Rect dest_rect = {i * PIXEL_SIZE, j * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE};
+            type = draw_map_loop(i, j);
+            if (type == FREE_SLOT_SHADOW)
+                type = FREE_SLOT;
 
-            map[height][width] = draw_map_loop(i, j);
+            map[height][width] = type;
             width++;
         }
         height++;

@@ -18,6 +18,7 @@
 #include "player.h"
 #include "sdl.h"
 #include "base_map.h"
+#include "game_info.h"
 
 void *draw_map_model(void *arg)
 {
@@ -44,16 +45,21 @@ void *draw_map_model(void *arg)
                 ground_value = wall_src_rect;
                 texture_value = wall;
             }
-            else if (element_type == FREE) {
+            else if (element_type == FREE_SLOT) {
+                ground_value = ground_src_rect;
+                texture_value = ground_shadowed;
+            }
+            else if (element_type == FREE_SLOT_SHADOW) {
                 ground_value = ground_shadowed_rect;
                 texture_value = ground_shadowed;
             }
             else {
                 error = 1;
-                render_error("adding texture in renderer error", SDL_GetError());
+                SDL_ShowSimpleMessageBox(0, "adding texture in renderer error", SDL_GetError(), data->window);
                 break;
             }
 
+            // TODO: separate rendering and map building
             error = SDL_RenderCopy(data->renderer, data->texture, &ground_value, &dest_rect);
             data->array_map[height][width] = init_t_map(ground_value, dest_rect, texture_value);
 

@@ -20,13 +20,13 @@
 #include "base_map.h"
 #include "game_info.h"
 
-void *draw_map_loop(int i, int j) {
+int draw_map_loop(int i, int j) {
     int code;
 
     if (j == J_BEGIN || j == J_BEGIN + 12 || i == I_BEGIN || i == I_BEGIN + 14) {
         code = WALL;
     } else if (j == J_BEGIN + 1 || (j % 2 != J_BEGIN % 2 && i % 2 == I_BEGIN % 2)) {
-        code = FREE_SLOT;
+        code = FREE_SLOT_SHADOW;
     } else if (i % 2 != I_BEGIN % 2) {
         code = FREE_SLOT;
     } else if (i % 2 == I_BEGIN % 2) {
@@ -36,8 +36,4 @@ void *draw_map_loop(int i, int j) {
     }
 
     return code;
-}
-
-void *render_error(char *title, char *message) {
-    SDL_ShowSimpleMessageBox(0, title, message, data->window);
 }

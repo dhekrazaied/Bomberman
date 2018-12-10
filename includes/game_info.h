@@ -48,6 +48,7 @@ enum MAP_GRID
   FREE_SLOT = 0,
   WALL = 1,
   FIRE = 2,
+  FREE_SLOT_SHADOW = 3, 
 };
 
 int **get_array_map();
