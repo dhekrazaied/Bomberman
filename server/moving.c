@@ -14,18 +14,11 @@
 #include "request.h"
 #include "game_info.h"
 
-// TODO:version with map_pointer
-// void	move_player(
-// 		    t_game_info *game_info,
-// 		    t_player_request *player_request,
-//         int num_player,
-// 		    int **map_pointer
-// 		    )
-
 void move_player(
     t_game_info *game_info,
     t_player_request *player_request,
-    int num_player)
+    int num_player,
+    int **map_pointer)
 {
 
   if (game_info->players[num_player - 1].connected == 0)

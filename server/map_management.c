@@ -85,6 +85,7 @@ void add_bomb_elements(
     }
 }
 
+// code mort
 int is_there_a_wall(
     t_game_info *game_info,
     int **map_pointer,
