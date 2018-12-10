@@ -19,18 +19,18 @@
 #include "my_put.h"
 #include "server.h"
 
-void		*init_server() // sdl provient de old/old_server.c
+void *init_server() // sdl provient de old/old_server.c
 {
-  int		s;
-  int		i;
-  t_srv		*srv;
-  int		tick;
-  pthread_t	main_thread;
-  pthread_t	tick_thread;
-  t_game_info	*game_info;
+  int s;
+  int i;
+  t_srv *srv;
+  int tick;
+  pthread_t main_thread;
+  pthread_t tick_thread;
+  t_game_info *game_info;
 
   tick = 0;
-  if ((srv = malloc(sizeof (*srv))) == NULL)
+  if ((srv = malloc(sizeof(*srv))) == NULL)
     return (NULL);
   if ((s = create_server_socket()) == -1)
     return (NULL);
@@ -64,11 +64,11 @@ void		*init_server() // sdl provient de old/old_server.c
   return (NULL);
 }
 
-int		add_player(t_srv **srv, int fd)
+int add_player(t_srv **srv, int fd)
 {
-  t_player_info	new_player;
+  t_player_info new_player;
 
-  new_player.connected = 0;
+  new_player.connected = 1;
   new_player.alive = 1;
   new_player.dying = 0;
   new_player.x_pos = 0;
@@ -86,20 +86,20 @@ int		add_player(t_srv **srv, int fd)
   return (1);
 }
 
-int			create_server_socket()
+int create_server_socket()
 {
-  int			s;
-  struct sockaddr_in	sin;
-  int			port;
+  int s;
+  struct sockaddr_in sin;
+  int port;
 
-  memset(&sin, 0, sizeof (struct sockaddr_in));
+  memset(&sin, 0, sizeof(struct sockaddr_in));
   if ((s = socket(PF_INET, SOCK_STREAM, 0)) == -1)
     return (-1);
   port = PORT;
   sin.sin_family = AF_INET;
   sin.sin_port = htons(port);
   sin.sin_addr.s_addr = INADDR_ANY;
-  if (bind(s, (struct sockaddr *)&sin, sizeof (sin)) == -1)
+  if (bind(s, (struct sockaddr *)&sin, sizeof(sin)) == -1)
     return (-1);
   if (listen(s, 42) == -1)
     return (-1);
