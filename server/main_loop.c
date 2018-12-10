@@ -49,38 +49,38 @@ int main_loop(t_srv **srv)
   {
     if ((*srv)->players[i].connected == 1)
     {
-      error = 0;
-      len = sizeof(error);
-      retval = getsockopt((*srv)->players[i].fd, SOL_SOCKET, SO_ERROR, &error, &len);
-      if (retval != 0 || error != 0)
-      {
-        (*srv)->players[i].connected = 0;
-        continue;
-      }
-      if (FD_ISSET((*srv)->players[i].fd, &(*srv)->fd_read))
-      {
-        int n = 0;
-        char buffer[sizeof(t_game_info)];
-        if ((n = recv((*srv)->players[i].fd, buffer, sizeof(t_game_info), 0)) < 0)
-        {
-          perror("recv()");
-          player_request = request_deserialize(buffer);
-          num_player = (*srv)->players[i].num_player;
-          handle_requests(game_info, player_request, num_player);
-          printf("%s", request_serialization(player_request));
-          my_putstr("GET REQUEST DUMB DUMB\n\n\n\n\n");
-          if (player_request->checksum != get_request_checksum(player_request))
-          {
-            close((*srv)->players[i].fd);
-            (*srv)->players[i].connected = 0;
-          }
-          n = 0;
-        }
-        buffer[n] = 0;
-        printf("client send request\n");
-      }
+      // error = 0;
+      // len = sizeof(error);
+      // retval = getsockopt((*srv)->players[i].fd, SOL_SOCKET, SO_ERROR, &error, &len);
+      // if (retval != 0 || error != 0)
+      // {
+      //   (*srv)->players[i].connected = 0;
+      //   continue;
+      // }
+      // if (FD_ISSET((*srv)->players[i].fd, &(*srv)->fd_read))
+      // {
+      //   int n = 0;
+      //   char buffer[sizeof(t_game_info)];
+      //   if ((n = recv((*srv)->players[i].fd, buffer, sizeof(t_game_info), 0)) < 0)
+      //   {
+      //     perror("recv()");
+      //     player_request = request_deserialize(buffer);
+      //     num_player = (*srv)->players[i].num_player;
+      //     handle_requests(game_info, player_request, num_player);
+      //     printf("%s", request_serialization(player_request));
+      //     my_putstr("GET REQUEST DUMB DUMB\n\n\n\n\n");
+      //     if (player_request->checksum != get_request_checksum(player_request))
+      //     {
+      //       close((*srv)->players[i].fd);
+      //       (*srv)->players[i].connected = 0;
+      //     }
+      //     n = 0;
+      //   }
+      //   buffer[n] = 0;
+      printf("client sent request\n");
     }
   }
-  // process_requests(srv);
-  return (1);
+}
+// process_requests(srv);
+return (1);
 }
