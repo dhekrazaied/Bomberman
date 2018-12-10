@@ -27,7 +27,7 @@ int main_loop(t_srv **srv)
   // int num_player;
 
   i = 0;
-  game_info = get_game_info();
+  // game_info = get_game_info();
   FD_ZERO(&(*srv)->fd_read);
   (*srv)->fd_max = (*srv)->fd;
   FD_SET((*srv)->fd, &(*srv)->fd_read);
