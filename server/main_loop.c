@@ -22,7 +22,7 @@ int main_loop(t_srv **srv)
   int error;
   socklen_t len;
   int retval;
-  // t_player_request *player_request;
+  t_player_request *player_request;
   // t_game_info *game_info;
   // int num_player;
   char		log[50];
@@ -69,7 +69,7 @@ int main_loop(t_srv **srv)
         {
           sprintf(log, "in client sent request");
           my_putstr(log);
-          // player_request = request_deserialize(buffer);
+          player_request = request_deserialize(buffer);
           // num_player = (*srv)->players[i].num_player;
           // handle_requests(game_info, player_request, num_player);
           // printf("%s", request_serialization(player_request));
