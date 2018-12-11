@@ -62,7 +62,7 @@ int main_loop(t_srv **srv)
         int n = 0;
         printf("serv: client fd: %d\n\n", (*srv)->players[i].fd);
         char buffer[sizeof(t_game_info)];
-        n = recv((*srv)->players[i].fd, buffer, sizeof(t_game_info), 0)
+        n = recv((*srv)->players[i].fd, buffer, sizeof(t_game_info), 0);
         if (n < 0)
         {
           printf("in client sent_request\n");
