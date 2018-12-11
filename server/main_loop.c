@@ -60,8 +60,10 @@ int main_loop(t_srv **srv)
       if (FD_ISSET((*srv)->players[i].fd, &(*srv)->fd_read))
       {
         int n = 0;
+        printf("serv: client fd: %d\n\n", (*srv)->players[i].fd);
         char buffer[sizeof(t_game_info)];
-        if ((n = recv((*srv)->players[i].fd, buffer, sizeof(t_game_info), 0)) < 0)
+        n = recv((*srv)->players[i].fd, buffer, sizeof(t_game_info), 0)
+        if (n < 0)
         {
           printf("in client sent_request\n");
           player_request = request_deserialize(buffer);
