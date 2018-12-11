@@ -20,6 +20,7 @@ void move_player(
     int num_player)
 {
 
+  printf("IN MOVE_PLAYER\n\n\n\n");
   if ((*game_info)->players[num_player - 1].connected == 0)
     return;
 

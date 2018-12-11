@@ -67,7 +67,7 @@ int main_loop(t_srv **srv)
         printf("serv: client fd: %d with n:%d\n\n", (*srv)->players[i].fd, n);
         if (n > 0)
         {
-          sprintf(log, "in client sent request");
+          sprintf(log, "in client sent request\n\n\n\n\n");
           my_putstr(log);
           player_request = request_deserialize(buffer);
           num_player = (*srv)->players[i].num_player;

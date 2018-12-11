@@ -24,6 +24,7 @@ void	handle_requests(
 
   // map_pointer = get_array_map();
   // add_destructible_elements(game_info, map_pointer);
+  printf("HANDLE_REQUESTS\n\n");
   move_player(game_info, player_request, num_player);
   // add_bomb_elements(game_info, map_pointer);
   // if (player_request->command == PLACE_BOMB)
