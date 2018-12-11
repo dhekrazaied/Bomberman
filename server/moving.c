@@ -44,6 +44,8 @@ void move_player(
   default:
     return;
   }
+
+  printf("pos_updated\n\n");
 }
 
 /*
