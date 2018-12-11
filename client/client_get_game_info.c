@@ -38,10 +38,11 @@ int get_message(int s)
     printf("checksum %ld \n", (long)game_info->checksum);
     printf("nb_client %d \n", game_info->nb_client);
     for (i=0; i<4; i++) {
-      if (&game_info->players[i])
+      if (&game_info->players[i]) {
         printf("client fd %d\n\n", (int)game_info->players[i].fd);
         printf("client xpos: %d\n\n", (int)game_info->players[i].x_pos);
         printf("client ypos: %d\n\n", (int)game_info->players[i].y_pos);
+      }
     }
     return 1;
   }
