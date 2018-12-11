@@ -23,7 +23,7 @@ void	handle_requests(
   // int	**map_pointer;
 
   // map_pointer = get_array_map();
-  add_destructible_elements(game_info, map_pointer);
+  // add_destructible_elements(game_info, map_pointer);
   move_player(game_info, player_request, num_player);
   // add_bomb_elements(game_info, map_pointer);
   // if (player_request->command == PLACE_BOMB)
