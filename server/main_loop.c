@@ -23,12 +23,12 @@ int main_loop(t_srv **srv)
   socklen_t len;
   int retval;
   t_player_request *player_request;
-  // t_game_info *game_info;
-  // int num_player;
+  t_game_info *game_info;
+  int num_player;
   char		log[50];
 
   i = 0;
-  // game_info = get_game_info();
+  game_info = get_game_info();
   FD_ZERO(&(*srv)->fd_read);
   (*srv)->fd_max = (*srv)->fd;
   FD_SET((*srv)->fd, &(*srv)->fd_read);
