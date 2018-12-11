@@ -15,7 +15,7 @@
 #include "game_info.h"
 
 void move_player(
-    t_game_info *game_info,
+    t_game_info **game_info,
     t_player_request *player_request,
     int num_player)
 {

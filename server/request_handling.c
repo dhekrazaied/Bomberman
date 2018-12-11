@@ -15,14 +15,14 @@
 #include "game_info.h"
 
 void	handle_requests(
-			t_game_info *game_info,
+			t_game_info **game_info,
 			t_player_request *player_request,
       int num_player
 			)
 {
-  int	**map_pointer;
+  // int	**map_pointer;
 
-  map_pointer = get_array_map();
+  // map_pointer = get_array_map();
   add_destructible_elements(game_info, map_pointer);
   move_player(game_info, player_request, num_player);
   // add_bomb_elements(game_info, map_pointer);
