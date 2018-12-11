@@ -20,7 +20,7 @@ void move_player(
     int num_player)
 {
 
-  if (game_info->players[num_player - 1].connected == 0)
+  if ((*game_info)->players[num_player - 1].connected == 0)
     return;
 
   // TODO: Check les collisions
@@ -30,16 +30,16 @@ void move_player(
   switch (player_request->command)
   {
   case MOVE_UP:
-    game_info->players[num_player - 1].y_pos -= 6;
+    (*game_info)->players[num_player - 1].y_pos -= 6;
     break;
   case MOVE_DOWN:
-    game_info->players[num_player - 1].y_pos += 6;
+    (*game_info)->players[num_player - 1].y_pos += 6;
     break;
   case MOVE_RIGHT:
-    game_info->players[num_player - 1].x_pos += 6;
+    (*game_info)->players[num_player - 1].x_pos += 6;
     break;
   case MOVE_LEFT:
-    game_info->players[num_player - 1].x_pos -= 6;
+    (*game_info)->players[num_player - 1].x_pos -= 6;
     break;
   default:
     return;
