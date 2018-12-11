@@ -60,9 +60,10 @@ int main_loop(t_srv **srv)
       if (FD_ISSET((*srv)->players[i].fd, &(*srv)->fd_read))
       {
         int n = 0;
-        printf("serv: client fd: %d\n\n", (*srv)->players[i].fd);
+
         char buffer[sizeof(t_game_info)];
         n = recv((*srv)->players[i].fd, buffer, sizeof(t_game_info), 0);
+        printf("serv: client fd: %d with n:%d\n\n", (*srv)->players[i].fd, n);
         if (n < 0)
         {
           printf("in client sent_request\n");
