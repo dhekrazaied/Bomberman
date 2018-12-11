@@ -25,6 +25,7 @@ int main_loop(t_srv **srv)
   t_player_request *player_request;
   t_game_info *game_info;
   int num_player;
+  char		log[50];
 
   i = 0;
   game_info = get_game_info();
@@ -64,9 +65,10 @@ int main_loop(t_srv **srv)
         char buffer[sizeof(t_game_info)];
         n = recv((*srv)->players[i].fd, buffer, sizeof(t_game_info), 0);
         printf("serv: client fd: %d with n:%d\n\n", (*srv)->players[i].fd, n);
-        if (n < 0)
+        if (n > 0)
         {
-          printf("in client sent_request\n");
+          sprintf(log, "in client sent request");
+          my_putstr(log);
           player_request = request_deserialize(buffer);
           num_player = (*srv)->players[i].num_player;
           handle_requests(game_info, player_request, num_player);
