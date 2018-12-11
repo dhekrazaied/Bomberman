@@ -71,7 +71,7 @@ int main_loop(t_srv **srv)
           my_putstr(log);
           player_request = request_deserialize(buffer);
           num_player = (*srv)->players[i].num_player;
-          handle_requests(game_info, player_request, num_player);
+          handle_requests(&game_info, player_request, num_player);
           // printf("%s", request_serialization(player_request));
           my_putstr("GET REQUEST DUMB DUMB\n\n\n\n\n");
           // if (player_request->checksum != get_request_checksum(player_request))
