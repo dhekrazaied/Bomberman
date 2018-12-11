@@ -72,7 +72,8 @@ int main_loop(t_srv **srv)
           player_request = request_deserialize(buffer);
           num_player = (*srv)->players[i].num_player;
           handle_requests(&game_info, player_request, num_player);
-          sprintf(log, "%d", game_info->players[num_player - 1].y_pos);
+          sprintf(log, "%d\n\n\n\n\n\n", game_info->players[num_player - 1].y_pos);
+          my_putstr(log);
           my_putstr("GET REQUEST DUMB DUMB\n\n\n\n\n");
           // if (player_request->checksum != get_request_checksum(player_request))
           // {
