@@ -17,8 +17,7 @@
 void move_player(
     t_game_info *game_info,
     t_player_request *player_request,
-    int num_player,
-    int **map_pointer)
+    int num_player)
 {
 
   if (game_info->players[num_player - 1].connected == 0)
